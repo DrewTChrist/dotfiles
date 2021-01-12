@@ -26,7 +26,9 @@ function install_zsh() {
 	wget -P ~/.local/share/fonts "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf"
 	fc-cache -f -v
 
-	# install powerlevel10k
+	# get powerlevel10k and zsh configs
+	wget -P ~/ "https://raw.githubusercontent.com/DrewTChrist/script-and-configs/master/configurations/.p10k.zsh"
+	wget -P ~/ "https://raw.githubusercontent.com/DrewTChrist/script-and-configs/master/configurations/.zshrc"
 
 }
 
