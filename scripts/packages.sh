@@ -38,7 +38,22 @@ function all() {
 	download_pycharm 
 }
 
-while getopts "adpz" opt; do
+function usage {
+    echo "usage: $0 [-adhpz]"
+    echo "  -a      complete all the actions"
+    echo "  -d      install docker and docker-compose"
+    echo "  -h      help"
+    echo "  -p      download latest version of pycharm"
+    echo "  -z      install zsh and zsh configuration"
+    printf "\n"
+}
+
+if [[ $1 == "" ]]; then
+    usage
+    exit 1
+fi
+
+while getopts "adhpz" opt; do
 	case $opt in
 		a) 
 			all
@@ -46,19 +61,14 @@ while getopts "adpz" opt; do
 		d)
 			install_docker
 			;;
+		h)
+			usage
+			;;
 		p)
 			download_pycharm
 			;;
 		z)
 			install_zsh
-			;;
-		\?)
-			echo "Invalid option: -$OPTARG" >&2
-			exit 1
-			;;
-		:)
-			echo "Option -$OPTARG requires an argument." >&2
-			exit 1
 			;;
 	esac
 done
