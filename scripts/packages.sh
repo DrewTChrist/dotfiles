@@ -24,7 +24,14 @@ function install_zsh() {
 	wget -P ~/.local/share/fonts "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf"
 	wget -P ~/.local/share/fonts "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf"
 	wget -P ~/.local/share/fonts "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf"
+
+	# TODO: Install Hack Nerd Font https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md
+
 	fc-cache -f -v
+	
+	# TODO: Install ls deluxe https://github.com/Peltoche/lsd#installation
+
+	# TODO: Install LS_COLORS https://github.com/trapd00r/LS_COLORS
 
 	# get powerlevel10k and zsh configs
 	wget -P ~/ "https://raw.githubusercontent.com/DrewTChrist/script-and-configs/master/configurations/.p10k.zsh"
