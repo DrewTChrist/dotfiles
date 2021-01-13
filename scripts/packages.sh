@@ -34,6 +34,7 @@ function install_zsh() {
 	# TODO: Install LS_COLORS https://github.com/trapd00r/LS_COLORS
 
 	# get powerlevel10k and zsh configs
+	# TODO: add a .vimrc
 	wget -P ~/ "https://raw.githubusercontent.com/DrewTChrist/script-and-configs/master/configurations/.p10k.zsh"
 	wget -P ~/ "https://raw.githubusercontent.com/DrewTChrist/script-and-configs/master/configurations/.zshrc"
 
