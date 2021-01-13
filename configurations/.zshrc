@@ -21,11 +21,12 @@ plugins=(
 )
 
 # directory and file colors
-alias ls='ls --color'
-export LS_COLORS='di=0;34:*.py=0;33:' 
+. ~/.local/share/lscolors.sh
 
-export ZSH=/home/andrew/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
+
+alias ls='lsd'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
