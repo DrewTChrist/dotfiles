@@ -65,7 +65,7 @@ function setup_vim() {
 function all() {
 	install_docker
 	install_zsh
-    setup_vim
+        setup_vim
 	download_pycharm 
 }
 
@@ -99,9 +99,9 @@ while getopts "adhpvz" opt; do
 		p)
 			download_pycharm
 			;;
-        v)
-            setup_vim
-            ;;
+                v)
+                        setup_vim
+                        ;;
 		z)
 			install_zsh
 			;;
