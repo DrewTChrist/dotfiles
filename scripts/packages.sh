@@ -6,8 +6,8 @@ function install_docker() {
 
 function download_pycharm() {
 	printf "Getting PyCharm Professional\n\n"
-	curl -L 'https://download.jetbrains.com/product?code=PY&latest&distribution=linux' --output pycharm.tar.gz
-	tar -xvf pycharm.tar.gz
+	curl -L 'https://download.jetbrains.com/product?code=PY&latest&distribution=linux' --output ~/pycharm.tar.gz
+	tar -xvf ~/pycharm.tar.gz
 }
 
 function install_zsh() {
@@ -40,12 +40,26 @@ function install_zsh() {
 }
 
 function setup_vim() {
-    # TODO: install vim-plug here
+    printf "Installing vim-plug plugins and .vimrc\n\n"
 
-    # copy vimrc
+    # i don't think this is made anywhere else, but vim-plug needs it
+    mkdir ~/.vim/plugged
+    
+    # install vim-plug
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+    # copy .vimrc
     wget -P ~/ "https://raw.githubusercontnet.com/DrewTChrist/script-and-configs/master/configurations/.vimrc"
 
-    # TODO: enter vim and source .vimrc to install plugins
+    # install plugins from .vimrc
+    vim +PlugInstall +qall
+
+    # YouCompleteMe relies on cmake 
+    apt install cmake -y
+
+    # build/install YouCompleteMe
+    python3 ~/.vim/plugged/YouCompleteMe/install.py
 }
 
 function all() {
