@@ -24,3 +24,16 @@ call plug#end()
 
 colorscheme gruvbox
 set background=dark
+
+let mapleader = " "
+
+nnoremap <leader>t :UndotreeToggle<CR>
+nnoremap <leader>h :wincmd h<CR>h
+nnoremap <leader>k :wincmd k<CR>k
+nnoremap <leader>l :wincmd l<CR>l
+nnoremap <leader>j :wincmd j<CR>j
+
+nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+
+nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
+nnoremap <silent> <Leader>gf :YcmCompleter FixIt<CR>
