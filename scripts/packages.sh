@@ -34,15 +34,24 @@ function install_zsh() {
 	# TODO: Install LS_COLORS https://github.com/trapd00r/LS_COLORS
 
 	# get powerlevel10k and zsh configs
-	# TODO: add a .vimrc
 	wget -P ~/ "https://raw.githubusercontent.com/DrewTChrist/script-and-configs/master/configurations/.p10k.zsh"
 	wget -P ~/ "https://raw.githubusercontent.com/DrewTChrist/script-and-configs/master/configurations/.zshrc"
 
 }
 
+function setup_vim() {
+    # TODO: install vim-plug here
+
+    # copy vimrc
+    wget -P ~/ "https://raw.githubusercontnet.com/DrewTChrist/script-and-configs/master/configurations/.vimrc"
+
+    # TODO: enter vim and source .vimrc to install plugins
+}
+
 function all() {
 	install_docker
 	install_zsh
+    setup_vim
 	download_pycharm 
 }
 
@@ -52,6 +61,7 @@ function usage {
     echo "  -d      install docker and docker-compose"
     echo "  -h      help"
     echo "  -p      download latest version of pycharm"
+    echo "  -v      install vimrc and plugins"
     echo "  -z      install zsh and zsh configuration"
     printf "\n"
 }
@@ -61,7 +71,7 @@ if [[ $1 == "" ]]; then
     exit 1
 fi
 
-while getopts "adhpz" opt; do
+while getopts "adhpvz" opt; do
 	case $opt in
 		a) 
 			all
@@ -75,6 +85,9 @@ while getopts "adhpz" opt; do
 		p)
 			download_pycharm
 			;;
+        v)
+            setup_vim
+            ;;
 		z)
 			install_zsh
 			;;
