@@ -196,7 +196,7 @@ awful.screen.connect_for_each_screen(function(s)
     local l = awful.layout.suit  -- Just to save some typing: use an alias.
     local layouts = { l.floating, l.tile, l.floating, l.fair, l.max,
 	l.floating, l.tile.left, l.floating, l.floating }
-    awful.tag(names, s, layouts)
+    awful.tag(names, s, layouts[2])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -223,18 +223,32 @@ awful.screen.connect_for_each_screen(function(s)
 	style   = {
 		shape = gears.shape.rounded_bar
 	},
+	layout  = {
+		spacing = 10,
+		--[[
+		spacing_widget = {
+		    {
+			forced_width = 5,
+			shape        = gears.shape.circle,
+			widget       = wibox.widget.separator
+		    },
+		    valign = 'center',
+		    halign = 'center',
+		    widget = wibox.container.place,
+		},
+		--]]
+		layout  = wibox.layout.fixed.horizontal
+	},
 	widget_template = {
             {
                 {
                     id     = 'clienticon',
                     widget = awful.widget.clienticon,
                 },
-                margins = 4,
+                margins = 2,
                 widget  = wibox.container.margin,
             },
             id              = 'background_role',
-            forced_width    = 48,
-            forced_height   = 48,
             widget          = wibox.container.background,
             create_callback = function(self, c, index, objects) --luacheck: no unused
                 self:get_children_by_id('clienticon')[1].client = c
@@ -248,6 +262,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
+	expand = "none",
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             mylauncher,
@@ -257,11 +272,11 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            wibox.widget.systray(),
+            -- mykeyboardlayout,
+            -- wibox.widget.systray(),
             mytextclock,
 	    volume_widget,
-            s.mylayoutbox,
+            -- s.mylayoutbox,
         },
     }
 end)
